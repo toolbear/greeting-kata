@@ -1,0 +1,13 @@
+{
+  "main": "greeting",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter tap"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "coffee-script": "^1.9.3",
+    "lodash": "^3.10.1",
+    "mocha": "^2.2.5",
+    "mocha-gwt": "git://github.com/toolbear/mocha-gwt.git#context-as-describe-alias"
+  }
+}

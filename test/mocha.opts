@@ -1,0 +1,7 @@
+--recursive
+--ui mocha-gwt
+--require ./test/helpers/helper.coffee
+--globals expect
+--reporter min
+--colors
+--compilers coffee:coffee-script/register
