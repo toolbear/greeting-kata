@@ -1,7 +1,16 @@
 describe '#greeting', ->
   Given -> @subject = require '..'
-  Then  -> expect(@subject).to.exist
+  When  -> @result = @subject @name
 
   describe 'simple greeting',  ->
-    When -> @result = @subject 'Bob'
-    Then -> @result == 'Hello, Bob.'
+    Given -> @name = 'Bob'
+    Then  -> @result == 'Hello, Bob.'
+
+  describe 'default greeting', ->
+    context 'name omitted', ->
+      When -> @result = @subject()
+      Then -> @result == 'Hello, my friend.'
+
+    context 'name null', ->
+      Given -> @name = null
+      Then  -> @result == 'Hello, my friend.'
