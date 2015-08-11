@@ -1,8 +1,11 @@
-greeting = (name) ->
-  _name = name || 'my friend'
-  if _name.toUpperCase() == _name
-    "HELLO #{_name}!"
+greeting = (first, second) ->
+  unless second
+    name = first || 'my friend'
+    if name.toUpperCase() == name
+      "HELLO #{name}!"
+    else
+      "Hello, #{name}."
   else
-    "Hello, #{_name}."
+    "Hello, #{first} and #{second}."
 
 module.exports = greeting

@@ -18,3 +18,7 @@ describe '#greeting', ->
   describe 'SHOUTED', ->
     Given -> @name = 'JERRY'
     Then  -> @result == 'HELLO JERRY!'
+
+  describe 'two names', ->
+    When -> @result = @subject 'Jill', 'Jane'
+    Then -> @result == 'Hello, Jill and Jane.'
