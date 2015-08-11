@@ -14,3 +14,7 @@ describe '#greeting', ->
     context 'name null', ->
       Given -> @name = null
       Then  -> @result == 'Hello, my friend.'
+
+  describe 'SHOUTED', ->
+    Given -> @name = 'JERRY'
+    Then  -> @result == 'HELLO JERRY!'
