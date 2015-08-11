@@ -1,11 +1,19 @@
-greeting = (first, second) ->
-  unless second
-    name = first || 'my friend'
-    if name.toUpperCase() == name
-      "HELLO #{name}!"
+greeting = (names...) ->
+  [first, second, others..., last] = names
+
+  if last
+    greetNormally "#{names[0..-2].join(', ')}, and #{last}"
+  else if second
+    greetNormally "#{first} and #{second}"
+  else if first
+    if first.toUpperCase() == first
+      greetLoudly first
     else
-      "Hello, #{name}."
+      greetNormally first
   else
-    "Hello, #{first} and #{second}."
+    greetNormally 'my friend'
+
+greetNormally = (combinedNames) -> "Hello, #{combinedNames}."
+greetLoudly   = (combinedNames) -> "HELLO #{combinedNames}!"
 
 module.exports = greeting

@@ -19,6 +19,12 @@ describe '#greeting', ->
     Given -> @name = 'JERRY'
     Then  -> @result == 'HELLO JERRY!'
 
-  describe 'two names', ->
-    When -> @result = @subject 'Jill', 'Jane'
-    Then -> @result == 'Hello, Jill and Jane.'
+  describe 'multiple names', ->
+
+    context 'a couple', ->
+      When -> @result = @subject 'Jill', 'Jane'
+      Then -> @result == 'Hello, Jill and Jane.'
+
+    context 'few or more', ->
+      When -> @result = @subject 'Amy', 'Brian', 'Charlotte'
+      Then -> @result == 'Hello, Amy, Brian, and Charlotte.'
