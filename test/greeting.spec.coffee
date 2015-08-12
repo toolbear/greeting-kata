@@ -20,11 +20,24 @@ describe '#greeting', ->
     Then  -> @result == 'HELLO JERRY!'
 
   describe 'multiple names', ->
+    When -> @result = @subject @names...
 
     context 'a couple', ->
-      When -> @result = @subject 'Jill', 'Jane'
-      Then -> @result == 'Hello, Jill and Jane.'
+      Given -> @names = ['Jill', 'Jane']
+      Then  -> @result == 'Hello, Jill and Jane.'
 
-    context 'few or more', ->
-      When -> @result = @subject 'Amy', 'Brian', 'Charlotte'
-      Then -> @result == 'Hello, Amy, Brian, and Charlotte.'
+    context 'a LOUD couple', ->
+      Given -> @names = ['JILL', 'JANE']
+      Then  -> @result == 'HELLO JILL AND JANE!'
+
+    context 'a few or more', ->
+      Given -> @names = ['Amy', 'Brian', 'Charlotte']
+      Then  -> @result == 'Hello, Amy, Brian, and Charlotte.'
+
+    context 'A CACOPHONY', ->
+      Given -> @names = ['AMY', 'BRIAN', 'CHARLOTTE']
+      Then  -> @result == 'HELLO AMY, BRIAN, AND CHARLOTTE!'
+
+    describe 'grouping shouters and non-shouters', ->
+      Given -> @names = ['Amy', 'BRIAN', 'Charlotte']
+      Then  -> @result == 'Hello, Amy and Charlotte. AND HELLO BRIAN!'
